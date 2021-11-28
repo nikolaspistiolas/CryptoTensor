@@ -2,7 +2,7 @@ import pymongo
 
 
 
-cl = pymongo.MongoClient('mongodb://%s:%s@159.223.48.44' % ('nikolaspistiolas','nikolaspistiolas'))
+cl = pymongo.MongoClient('mongodb://%s:%s@178.128.23.182' % ('nikolaspistiolas','nikolaspistiolas'))
 db = cl['production']
 col = db['symbols']
 
