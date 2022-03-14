@@ -4,10 +4,11 @@ from datetime import datetime
 
 base_url = 'https://api3.binance.com'
 
-cl = pymongo.MongoClient('mongodb://%s:%s@159.223.48.44' % ('nikolaspistiolas','nikolaspistiolas'))
+cl = pymongo.MongoClient('mongodb://%s:%s@178.128.23.182' % ('nikolaspistiolas','nikolaspistiolas'))
 print(cl.list_databases())
 db = cl['production']
 col = db['data']
+col.delete_many({})
 symbols = db['symbols'].find({'active':True})
 
 interval = '1h'

@@ -13,7 +13,7 @@ state = {
     'open_down': False,
     'open': 0
 }
-for pollapl in range(160, 186, 5):
+for pollapl in range(170, 186, 5):
     pollapl /= 100
     c = 0
     ret = 100
@@ -23,9 +23,11 @@ for pollapl in range(160, 186, 5):
 
             for i in range(len(data)-1):
                 if data[i]['neural_up'] > pollapl * data[i]['neural_stable'] and data[i]['neural_up'] > pollapl * data[i]['neural_stable']:
+                    print(data[i]['symbol'],data[i]['date'])
                     c += 1
-                    ret *= 1 + (data[i+1]['last_price']-data[i]['last_price'])/data[i]['last_price'] #- 0.002
-                # elif data[i]['neural_down'] > pollapl * data[i]['neural_up'] and data[i]['neural_down'] > pollapl * data[i]['neural_stable']:
-                #     c += 1
-                #     ret *= 1 - (data[i+1]['last_price']-data[i]['last_price'])/data[i]['last_price'] - 0.002
+                    ret *= 1 + (data[i+1]['last_price']-data[i]['last_price'])/data[i]['last_price'] - 0.002
+                elif data[i]['neural_down'] > pollapl * data[i]['neural_up'] and data[i]['neural_down'] > pollapl * data[i]['neural_stable']:
+                    print('DOWN',data[i]['symbol'], data[i]['date'])
+                    c += 1
+                    ret *= 1 - (data[i+1]['last_price']-data[i]['last_price'])/data[i]['last_price'] - 0.002
     print(ret, pollapl, c)
